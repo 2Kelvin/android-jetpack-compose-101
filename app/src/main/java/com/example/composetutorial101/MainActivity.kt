@@ -1,10 +1,10 @@
 package com.example.composetutorial101
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -14,11 +14,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.composetutorial101.ui.theme.ComposeTutorial101Theme
 
 class MainActivity : ComponentActivity() {
@@ -56,7 +54,7 @@ fun MessageCard(msg: Message) {
 
         Spacer(modifier = Modifier.width(8.dp))
 
-        Column() {
+        Column {
             Text(
                 text = msg.sender,
                 color = MaterialTheme.colors.secondaryVariant,
@@ -78,6 +76,15 @@ fun MessageCard(msg: Message) {
         }
     }
 }
+
+//Having used Material Design; colors, text and backgrounds will automatically adapt to the dark background
+// Thanks to the Material Design support, Jetpack Compose can handle the dark theme by default.
+@Preview(name = "Light Mode")
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true,
+    name = "Dark Mode"
+)
 
 // the '@Preview' annotation is used on a composable function that does not take in parameters
 @Preview(showBackground = true)
